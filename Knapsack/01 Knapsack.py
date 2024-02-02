@@ -1,3 +1,5 @@
+# Knapsack Problem
+
 def find_max_fit(weights, values, capacity, items):
     matrix = [[0 for _ in range(capacity + 1)] for _ in range(items + 1)]
 
