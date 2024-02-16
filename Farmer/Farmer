@@ -1,0 +1,11 @@
+from scipy.optimize import linprog
+obj = [-200, -150] 
+#constraints
+lhs_ineq = [[20, 10], [10, 15]] #LHS
+rhs_ineq =[1200, 600] #RHS 
+bnd = [(20, 60),(10, 60)] #Bounds
+opt = linprog(c=obj, A_ub=lhs_ineq, b_ub=rhs_ineq, bounds=bnd) #function
+print("Wheat acres",int(opt.x[0]))
+print("Barley acres",int(opt.x[1]))
+max_profit=sum(c * -x for c, x in zip(obj, opt.x))
+print("Maximum profit =",max_profit)
