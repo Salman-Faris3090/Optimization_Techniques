@@ -1,0 +1,10 @@
+from scipy.optimize import linprog
+obj = [-3, -2] 
+lhs_ineq = [[1, 1], [2, 1]] #LHS 
+rhs_ineq =[400, 500] #RHS 
+bnd = [(100, 400),(50, 400)] #Bounds
+opt = linprog(c=obj, A_ub=lhs_ineq, b_ub=rhs_ineq, bounds=bnd) #function
+print("Chocolate cake",int(opt.x[0]))
+print("Vanila cake",int(opt.x[1]))
+max_profit=sum(c * -x for c, x in zip(obj, opt.x))
+print("Maximum profit =",max_profit)
